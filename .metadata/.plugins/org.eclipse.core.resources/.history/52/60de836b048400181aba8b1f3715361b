@@ -1,0 +1,11 @@
+<div class="panel panel-info">
+	<div class="panel-heading">
+	<b>Blog Title:{{blogPost.blogTitle}}</b><br> 
+	<b>Posted On:{{blogPost.postedOn | date:'medium'}}</b><br>
+        <b>Posted By:{{blogPost.postedBy.firstname}}   &nbsp   {{blogPost.postedBy.lastname}}</b>
+        </div>
+        <div class="panel panel-body">
+       {{blogPost.comment}}comment
+        </div>
+        {{blogPost.likes}} likes
+        </div>

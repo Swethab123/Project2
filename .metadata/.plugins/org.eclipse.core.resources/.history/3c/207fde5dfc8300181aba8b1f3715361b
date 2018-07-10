@@ -1,0 +1,17 @@
+
+<div class="panel panel-info">
+	<div class="panel-heading">
+	<b>{{blog.blogTitle}}</b><br> 
+	<b>Posted On:{{blog.postedOn | date:'medium'}}</b><br>
+        <b>Posted By:{{blog.postedBy.firstname}}   &nbsp;   {{blog.postedBy.lastname}}</b>
+        </div>
+        <div class="panel panel-body">
+        {{blogPost.blogContent}}
+        </div>
+        <br>
+
+        <div>
+       <button ng-click="approve(blogPost)"class="btn btn-primary">Approve</button>
+       <button class="btn btn-danger" ng-click="reject(blogPost)">Reject</button>
+       </div>
+       </div>
