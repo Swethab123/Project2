@@ -137,7 +137,7 @@ public class BlogPostController {
 	public ResponseEntity<?> addBlogComment(@PathVariable int id, @RequestBody BlogComment blogComment,
 			HttpSession session) {
 
-		String email = (String) session.getAttribute("loginId");
+		String email = (String) session.getAttribute("email");
 		if (email == null) {
 			ErrorClazz error = new ErrorClazz(5, "Unauthorised access...");
 			return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED);
@@ -156,6 +156,17 @@ public class BlogPostController {
 
 		}
 		return new ResponseEntity<BlogComment>(blogComment, HttpStatus.OK);
+	}
+	
+	@RequestMapping(value="/blogcomments/{blogPostId}", method=RequestMethod.GET)
+	public ResponseEntity<?> getAllComments(@PathVariable int blogPostId, HttpSession session){
+		String email = (String) session.getAttribute("email");
+		if (email == null) {
+			ErrorClazz error = new ErrorClazz(7, "Unauthorised access...");
+			return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED);
+		}
+		List<BlogComment>blogComments=blogPostDao.getAllBlogComment(blogPostId);
+		return new ResponseEntity<List<BlogComment>>(blogComments,HttpStatus.OK);
 	}
 
 

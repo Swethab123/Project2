@@ -6,18 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
 @Entity
-@Table(name = "newfriend_s180250")
+@Table(name="friend_s180396")
 public class Friend {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@ManyToOne
+		@ManyToOne
 	private User fromId;
-	@ManyToOne
-	private User toId;
-	private char status;
+        @ManyToOne
+    private User toId;
+    private char status;
 
 	public int getId() {
 		return id;

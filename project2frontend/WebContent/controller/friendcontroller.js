@@ -20,15 +20,6 @@ app.controller('FriendCtrl', function($scope, $location, $rootScope,
 
 		})
 	}
-	function getPendingRequests() {
-		FriendService.getPendingRequests().then(function(response) {
-			$scope.pendingRequests = response.data
-		}, function(response) {
-			$rootScope.error = response.data
-			if (response.status == 401)
-				$location.path('/login')
-		})
-	}
 	$scope.addFriend = function(toId) {
 		console.log('Friend email ' + toId);
 		FriendService.addFriend(toId).then(function(response) {
@@ -39,6 +30,16 @@ app.controller('FriendCtrl', function($scope, $location, $rootScope,
 			if (response.status == 401)
 				$location.path('/login')
 
+		})
+	}
+	
+	function getPendingRequests() {
+		FriendService.getPendingRequests().then(function(response) {
+			$scope.pendingRequests = response.data
+		}, function(response) {
+			$rootScope.error = response.data
+			if (response.status == 401)
+				$location.path('/login')
 		})
 	}
 	$scope.acceptRequest = function(request) {
@@ -68,7 +69,7 @@ app.controller('FriendCtrl', function($scope, $location, $rootScope,
 			$location.path('/login')
 
 	})
-
+	
 	getAllSuggestedUsers()
 	getPendingRequests()
 })

@@ -4,9 +4,11 @@ C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\dao\JobD
 C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\project2backend\App.java
 C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\model\BlogPostLikes.java
 C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\model\Notification.java
+C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\configuration\WebSocketConfiguration.java
 C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\dao\BlogPostDaoImpl.java
 C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\dao\ProfilePictureDao.java
 C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\model\Job.java
+C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\model\Chat.java
 C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\model\BlogComment.java
 C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\configuration\WebConfig.java
 C:\Users\mruser\Desktop\Project2\project2backend\src\main\java\com\niit\dao\UserDaoImpl.java

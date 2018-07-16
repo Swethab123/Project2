@@ -70,7 +70,7 @@ app.controller('BlogInDetailCtrl',function($scope, $location, $rootScope, BlogSe
 					$scope.commentTxt = ''
 					getBlogComments(id)
 				}, function(response) {
-					$rootscope.error = resonse.data
+					$rootScope.error = response.data
 					if (response.status == 401)
 						$location.path('/login')
 					else {
@@ -78,4 +78,15 @@ app.controller('BlogInDetailCtrl',function($scope, $location, $rootScope, BlogSe
 					}
 				});
 	}
+	
+	function getBlogComments(id) {
+		BlogService.getBlogComments(id).then(function(response) {
+			$scope.comments = response.data
+		}, function(response) {
+			$rootScope.error = response.data
+			if (response.status == 401)
+				$location.path('/login')
+		});
+	}
+	getBlogComments(id);
 })

@@ -52,21 +52,27 @@ app.config(function($routeProvider){
 		controller:'BlogInDetailCtrl',
 		templateUrl:'views/	blogapprovalform.html'
 	})
-
-/*	
-	.when('/uploadprofilepic', {
-		templateUrl : 'views/uploadprofilepic.html'
-	})
 	.when('/suggestedUsers', {
 		templateUrl : 'views/suggestedusers.html',
 		controller : 'FriendCtrl'
-	}).when('/pendingrequests', {
+	})
+	.when('/pendingrequests', {
 		templateUrl : 'views/pendingrequests.html',
 		controller : 'FriendCtrl'
-	}).when('/friends', {
+	})
+	.when('/friends', {
 		templateUrl : 'views/friendslist.html',
 		controller : 'FriendCtrl'
-	})*/
+	})
+	.when('/chat',{
+		templateUrl:'views/chat.html',
+		controller:'ChatCtrl'
+	})
+    	
+	.when('/uploadprofilepic', {
+		templateUrl : 'views/uploadprofilepic.html'
+	})
+	
 
 		
 	.otherwise({

@@ -34,7 +34,11 @@ app.factory('BlogService',function($http){
 	}
 	
 	blogService.addComment=function(id,blogComment){         
-		return $http.put("http://localhost:8010/project2middleware/addcomment/"+id,blogComment);             
+		return $http.post("http://localhost:8010/project2middleware/addcomment/"+id,blogComment)             
+	}
+	
+	blogService.getBlogComments=function(id){
+		return $http.get("http://localhost:8010/project2middleware/blogcomments/"+id)
 	}
 	return blogService;
 	

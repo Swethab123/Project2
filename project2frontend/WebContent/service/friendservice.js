@@ -3,9 +3,10 @@
  */
 app.factory('FriendService',function($http){
 	var friendService={}
-	friendService.getAllSuggestedUsers=function(){
+	friendService.getAllSuggestedUsers = function(){
 		return $http.get("http://localhost:8010/project2middleware/suggestedUsers")
 	}
+	
 	friendService.addFriend=function(toId){
 		return $http.post("http://localhost:8010/project2middleware/addfriend",toId)
 	}
@@ -21,5 +22,6 @@ app.factory('FriendService',function($http){
 	friendService.getAllFriends=function(){
 		return $http.get("http://localhost:8010/project2middleware/friends");
 	}
+	
 	return friendService;
 })

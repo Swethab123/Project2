@@ -1,4 +1,3 @@
-
 package com.niit.controllers;
 
 import javax.servlet.http.HttpSession;
@@ -23,35 +22,35 @@ import com.niit.model.User;
 public class ProfilePictureController {
 @Autowired
 private ProfilePictureDao profilePictureDao;
-	@RequestMapping(value="/uploadprofilepic",method=RequestMethod.POST)
-	//directly from html file.
-	public ResponseEntity<?> uploadProfilePicture(@RequestParam CommonsMultipartFile image,HttpSession session){
-		String email=(String)session.getAttribute("email");
-		if(email==null){
-			ErrorClazz error=new ErrorClazz(7,"Unauthrozied access.. Please login");
-			return new ResponseEntity<ErrorClazz>(error,HttpStatus.UNAUTHORIZED); //2nd callback function
-		}
-		ProfilePicture profilePicture=new ProfilePicture();
-		profilePicture.setEmail(email);
-		profilePicture.setImage(image.getBytes());
-		profilePictureDao.uploadProfilePicture(profilePicture);//insert or update 
-		return new ResponseEntity<ProfilePicture>(profilePicture,HttpStatus.OK);
+@RequestMapping(value = "/uploadprofilepic", method = RequestMethod.POST)
+public ResponseEntity<?> uploadProfilePicture(@RequestParam CommonsMultipartFile image, HttpSession session) {
+	String email = (String) session.getAttribute("email");
+	if (email == null) {
+		ErrorClazz error = new ErrorClazz(4, "Unauthrozied access.. Please login");
+		return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED); // 2nd
+																				// callback
+																				// function
 	}
-	//<img src="http://localhost:..../middleware/getimage/nameoftheuser" alt="image not found">
-	//NO HTTPSTATUS CODE
-	//ONLY BYTE[]
-	@RequestMapping(value="/getimage/{email:.+}",method=RequestMethod.GET)
-	public @ResponseBody byte[] getImage(@PathVariable String email,HttpSession session){
-		String auth=(String)session.getAttribute("loginId");
-		if(auth==null){
-			return null;
-		}
-		System.out.println(email);
-		ProfilePicture profilePicture=profilePictureDao.getProfilePicture(email);
-		
-		if(profilePicture==null)
-			return null;
-		System.out.println("Image is "  + profilePicture.getImage() + " " + email);
-		return profilePicture.getImage();
+	ProfilePicture profilePicture = new ProfilePicture();
+	profilePicture.setEmail(email);
+	profilePicture.setImage(image.getBytes());
+	profilePictureDao.uploadProfilePicture(profilePicture);// insert or
+															// update
+	return new ResponseEntity<ProfilePicture>(profilePicture, HttpStatus.OK);
+}
+
+@RequestMapping(value = "/getimage/{email:.+}", method = RequestMethod.GET)
+public @ResponseBody byte[] getImage(@PathVariable String email, HttpSession session) {
+	String auth = (String) session.getAttribute("email");
+	if (auth == null) {
+		return null;
 	}
+	System.out.println(email);
+	ProfilePicture profilePicture = profilePictureDao.getProfilePicture(email);
+
+	if (profilePicture == null)
+		return null;
+	System.out.println("Image is " + profilePicture.getImage() + " " + email);
+	return profilePicture.getImage();
+}
 	}

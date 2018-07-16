@@ -27,7 +27,7 @@ public class FriendController {
 
 	@RequestMapping(value = "/suggestedUsers", method = RequestMethod.GET)
 	public ResponseEntity<?> suggestedUsers(HttpSession session) {
-		String email = (String) session.getAttribute("loginId");
+		String email = (String) session.getAttribute("email");
 		if (email == null) {
 			ErrorClazz error = new ErrorClazz(5, "Unauthorized access...");
 			return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED);
@@ -40,9 +40,9 @@ public class FriendController {
 
 	@RequestMapping(value = "/addfriend", method = RequestMethod.POST)
 	public ResponseEntity<?> addFriend(@RequestBody String toId, HttpSession session) {
-		String email = (String) session.getAttribute("loginId");
+		String email = (String) session.getAttribute("email");
 		if (email == null) {
-			ErrorClazz error = new ErrorClazz(5, "Unauthorized access...");
+			ErrorClazz error = new ErrorClazz(7, "Unauthorized access...");
 			return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED);
 		}
 		User fromId = userDao.getUser(email);
@@ -55,12 +55,12 @@ public class FriendController {
 		return new ResponseEntity<Void>(HttpStatus.OK);
 
 	}
-
+	
 	@RequestMapping(value = "/pendingrequests", method = RequestMethod.GET)
 	public ResponseEntity<?> pendingRequests(HttpSession session) {
-		String email = (String) session.getAttribute("loginId");
+		String email = (String) session.getAttribute("email");
 		if (email == null) {
-			ErrorClazz error = new ErrorClazz(5, "Unauthorized access...");
+			ErrorClazz error = new ErrorClazz(7, "Unauthorized access...");
 			return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED);
 		}
 		// String email="john@abc.com";
@@ -71,21 +71,21 @@ public class FriendController {
 
 	@RequestMapping(value = "/acceptrequest", method = RequestMethod.POST)
 	public ResponseEntity<?> acceptrequest(@RequestBody Friend request, HttpSession session) {
-		String email = (String) session.getAttribute("loginId");
+		String email = (String) session.getAttribute("email");
 		if (email == null) {
-			ErrorClazz error = new ErrorClazz(5, "Unauthorized access...");
+			ErrorClazz error = new ErrorClazz(7, "Unauthorized access...");
 			return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED);
 		}
 		friendDao.acceptRequest(request);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 
 	}
-
+	
 	@RequestMapping(value = "/deleterequest", method = RequestMethod.POST)
 	public ResponseEntity<?> deleterequest(@RequestBody Friend request, HttpSession session) {
-		String email = (String) session.getAttribute("loginId");
+		String email = (String) session.getAttribute("email");
 		if (email == null) {
-			ErrorClazz error = new ErrorClazz(5, "Unauthorized access...");
+			ErrorClazz error = new ErrorClazz(7, "Unauthorized access...");
 			return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED);
 		}
 		friendDao.deleteRequest(request);
@@ -95,9 +95,9 @@ public class FriendController {
 
 	@RequestMapping(value = "/friends", method = RequestMethod.GET)
 	public ResponseEntity<?> getAllFriends(HttpSession session) {
-		String email = (String) session.getAttribute("loginId");
+		String email = (String) session.getAttribute("email");
 		if (email == null) {
-			ErrorClazz error = new ErrorClazz(5, "Unauthorized access...");
+			ErrorClazz error = new ErrorClazz(7, "Unauthorized access...");
 			return new ResponseEntity<ErrorClazz>(error, HttpStatus.UNAUTHORIZED);
 		}
 		// String email="john@abc.com";
@@ -105,4 +105,7 @@ public class FriendController {
 		return new ResponseEntity<List<Friend>>(friends, HttpStatus.OK);
 
 	}
+	
+
+
 }

@@ -12,6 +12,7 @@ public interface BlogPostDao {
 	BlogPost getBlogPost(int id);
 	void updateApprovalStatus(BlogPost blogPost);
 	void addBlogComment(BlogComment blogComment);
+	List<BlogComment>getAllBlogComment(int blogPostId);
 	
 
 }

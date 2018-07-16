@@ -13,7 +13,12 @@
 <link
 	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"
 	rel="stylesheet" />
+	
+	
 <link href="resourses/css/color.css" rel="stylesheet">
+<link href="resourses/css/fileinput.css" rel="stylesheet">
+<link href="resourses/css/fileinput.min.css" rel="stylesheet">
+
 </head>
 <body ng-app="app">
 <header>
@@ -61,14 +66,19 @@
 			<li><a href="#/friends">Friends</a></li>
 			</ul>
 			
-			<li><a href="#/chat" ng-show="loggedInUser.firstname">chat
+			<li><a href="#/uploadprofilepic"
+							ng-show="loggedInUser.firstname!=undefined"> <img
+								src="http://localhost:8010/project2middleware/getimage/{{loggedInUser.email}}"
+								alt="Upload ProfilePicture" height="40px" width="40px"
+								class="img-circle">
+
 						</a></li>
+                    
+			 <li><a href="#/chat" ng-show="loggedInUser.firstname">chat </a></li>
            
-            <li><a href="#profilepic" ng-show="loggedInUser.firstname">
-                    <img src="http://localhost:8010/project2middleware/getprofilepic/{{loggedInUser.email}}" alt="upload Picture" width="30px" height="30px" class="img-rounded">
-                    </a></li>
-                        
-            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
+           
+<!--               <li><a href="#/uploadprofilepic">uploadprofilepicture</a> </li>           
+ -->            <li><a href="#/updateprofile" ng-show="loggedInUser.firstname!=undefined">Welcome {{loggedInUser.firstname}} &nbsp; {{loggedInUser.lastname}}</a></li>
            <li><a href="" ng-click="logout()" ng-show="loggedInUser.firstname!=undefined">Sign out</a></li>
            <li><a href="#/registration" ng-show="loggedInUser.firstname==undefined">Sign Up</a></li>
             <li><a href="#/login" ng-show="loggedInUser.firstname==undefined">Sign In</a></li>
@@ -99,12 +109,15 @@
 <script type="text/javascript" src="service/blogservice.js"></script>
 <script type="text/javascript" src="controller/blogindetailcontroller.js"></script>
 
+<script type="text/javascript" src="controller/friendcontroller.js"></script>
+<script type="text/javascript" src="service/friendservice.js"></script>
+
+<script type="text/javascript" src="service/chatservice.js"></script>
+<script type="text/javascript" src="controller/chatcontroller.js"></script>
+
+<script type="text/javascript" src="js/sockjs/sockjs.min.js"></script>
+<script type="text/javascript" src="js/stomp/dist/stomp.min.js"></script>
+
 </body>
-
-
-
-
-
-
 
 </html>
