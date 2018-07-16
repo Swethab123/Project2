@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div ng-show="loggedInUser.role=='ADMIN'">
 		<div class="panel panel-info">
 	          <div class="panel-heading"><h3>List of blogs need to be approved</h3></div>
@@ -12,4 +13,20 @@
 </ul>
 </div>
 </div>
+=======
+<div ng-show="loggedInUser.role=='ADMIN'">
+		<div class="panel panel-info">
+	          <div class="panel-heading"><h3>List of blogs need to be approved</h3></div>
+	          <div class="panel-body">
+		     <ul>
+		      <li ng-repeat="blog in blogsWaitingForApproval">
+		 <a href="#/getblogwaitingforapproval/{{blog.id}}"><b>Blog Title:</b>{{blog.blogTitle}}<br> </a>
+	   <b>Posted On:</b>{{blog.postedOn | date:'medium'}}<br>
+	<b>Posted By:</b>{{blog.postedBy.firstname}}   &nbsp   {{blog.postedBy.lastname}}<br>
+	<hr>
+</li>
+</ul>
+</div>
+</div>
+>>>>>>> ed1052ccbe7ed6879768238e01a0428dabbae07a
 	</div>>

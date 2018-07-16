@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 Manifest-Version: 1.0
 Built-By: MRuser
 Build-Jdk: 1.8.0_45
 Created-By: Maven Integration for Eclipse
 
+=======
+Manifest-Version: 1.0
+Built-By: MRuser
+Build-Jdk: 1.8.0_45
+Created-By: Maven Integration for Eclipse
+
+>>>>>>> ed1052ccbe7ed6879768238e01a0428dabbae07a

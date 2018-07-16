@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /**
  *
  * jobservice
@@ -21,4 +22,29 @@ app.factory('JobService',function($http){
 	     }
 	
 	return jobservice;
+=======
+/**
+ *
+ * jobservice
+ * 
+ */
+
+app.factory('JobService',function($http){
+	var jobservice={}
+	
+	jobservice.addJob=function(job){
+	return $http.post("http://localhost:8010/project2middleware/addjob",job)
+         }
+	jobservice.getActiveJobs=function(){
+		return $http.get("http://localhost:8010/project2middleware/activejobs")
+	     }
+	jobservice.getInActiveJobs=function(){
+		return $http.get("http://localhost:8010/project2middleware/inactivejobs")
+	     }
+	jobservice.updateActiveStatus=function(job){
+		return $http.put("http://localhost:8010/project2middleware/updatejob",job)
+	     }
+	
+	return jobservice;
+>>>>>>> ed1052ccbe7ed6879768238e01a0428dabbae07a
 })
